@@ -4,11 +4,25 @@ A digital grievance register that connects citizens directly to their MP's offic
 
 **Hackathon:** Google Cloud "Build with AI: Code for Communities"
 
----
-
-<img src="demo.png"/>
+**Live Demo:** [https://gdg-snowy.vercel.app](https://gdg-snowy.vercel.app)
 
 ---
+
+<img src="demo.png" alt="Dashboard preview" />
+
+---
+
+## Features
+
+- **Citizen Portal** – submit grievances with title, category, ward, description, photo, or voice note; track status; upvote other issues.
+- **MP Dashboard** – view AI-summarized complaints ranked by urgency and impact; update status; manage welfare schemes; generate PDF reports.
+- **AI Prioritization** – Gemini API scores complaints using the formula:
+  ```
+  priority_score = urgency × ln(estimated_impact + 1) × (1 + upvotes / 20)
+  ```
+- **Google Maps Integration** – visualize complaints on a constituency heatmap.
+- **Offline Fallback** – keyword-based scoring works even without Gemini API key.
+- **Responsive Design** – works on desktop and mobile.
 
 ## About the Project
 
@@ -16,19 +30,20 @@ Civic complaints usually go nowhere — a WhatsApp forward, a paper petition, a 
 
 **People's Priorities** fixes that with two portals:
 
-- **Citizens** file a grievance (title, category, ward, description + optional photo/voice note), track its status, and upvote issues their neighbors raised.
+- **Citizens** file a grievance, track its status, and upvote issues their neighbors raised.
 - **MPs / staff** get a dashboard where every complaint is auto-summarized by Gemini AI, scored for urgency + impact, and ranked so the highest-priority issues surface automatically. They can also manage welfare schemes and generate PDF reports.
 
-**Priority formula:**
-```
-priority_score = urgency × ln(estimated_impact + 1) × (1 + upvotes / 20)
-```
+## Team Members
 
-If no Gemini API key is set, a built-in keyword-based fallback keeps everything working end-to-end.
+- **Supreet Mohapatra**
+- **Ompreet Mohapatra**
+- **Sudeshna Dash**
+
+Gandhi Engineering College, Bhubaneswar
 
 ## Tech Stack
 
-React 19 · Vite 6 · Tailwind CSS v4 · Express · Firebase Auth · Google Cloud Firestore · Gemini API · Google Maps Platform (heatmap) · jsPDF
+React 19 · Vite 6 · Tailwind CSS v4 · Firebase Auth · Google Cloud Firestore · Gemini API · Google Maps Platform · jsPDF
 
 ## Setup Guide
 
@@ -88,6 +103,62 @@ This file isn't in the repo (it holds your project's Firebase keys) — you need
 
 That's it — `src/firebase.js` reads this file directly, so the app picks it up on the next `npm run dev`.
 
+## Deploy to Vercel
+
+The easiest way to deploy this app is to use [Vercel](https://vercel.com).
+
+### Quick Deploy
+
+1. **Install Vercel CLI** (optional – you can also use the Vercel Git integration):
+
+   ```bash
+   npm install -g vercel
+   ```
+
+2. **Deploy from your project root:**
+
+   ```bash
+   vercel --prod
+   ```
+
+   Follow the interactive prompts:
+   - Link to existing project? → `n` (if first time)
+   - Project name? → press Enter (auto-generate) or type `people-priorities`
+   - Override settings? → `n` (Vercel auto-detects Vite)
+
+3. **Set environment variables** in the Vercel dashboard:
+
+   - Go to your project on [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click **Settings → Environment Variables**
+   - Add the following variables (all `VITE_` prefixed are required for Firebase):
+
+     | Key | Value |
+     |-----|-------|
+     | `VITE_FIREBASE_API_KEY` | Your Firebase API Key |
+     | `VITE_FIREBASE_AUTH_DOMAIN` | `your-project-id.firebaseapp.com` |
+     | `VITE_FIREBASE_PROJECT_ID` | Your Firebase Project ID |
+     | `VITE_FIREBASE_STORAGE_BUCKET` | `your-project-id.appspot.com` |
+     | `VITE_FIREBASE_MESSAGING_SENDER_ID` | Your sender ID |
+     | `VITE_FIREBASE_APP_ID` | Your Firebase App ID |
+     | `VITE_GOOGLE_MAPS_PLATFORM_KEY` | Your Google Maps API Key (optional) |
+
+   - Click **Save** for each variable.
+
+4. **Redeploy** with environment variables:
+
+   ```bash
+   vercel --prod
+   ```
+
+5. Your app is live at `https://your-project-name.vercel.app`.
+
+### Git Integration (Automatic Deploys)
+
+1. Push your code to GitHub.
+2. Import the repository on Vercel.
+3. Set environment variables in the Vercel dashboard.
+4. Each push to `main` automatically redeploys.
+
 ## Demo Credentials
 
 | Role | Username | Password |
@@ -95,6 +166,12 @@ That's it — `src/firebase.js` reads this file directly, so the app picks it up
 | MP | `mp@people.in` | `password123` |
 | Citizen | `citizen@people.in` | `password123` |
 
-## License
+## Acknowledgments
 
-Apache-2.0
+- Google Cloud for providing Firebase, Gemini API, and Google Maps Platform credits.
+- Google AI Studio for prototyping the Gemini integration.
+- Vercel for hosting the live demo.
+
+---
+
+Happy coding! 🚀
