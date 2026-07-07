@@ -6,6 +6,10 @@ A digital grievance register that connects citizens directly to their MP's offic
 
 ---
 
+<img src="demo.png"/>
+
+---
+
 ## About the Project
 
 Civic complaints usually go nowhere — a WhatsApp forward, a paper petition, a comment at a ward office — with no record and no way to compare which issues actually affect the most people.
