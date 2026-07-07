@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink-navy: #0F172A;
+  --color-paper: #FAF8F2;
+  --color-marigold: #D97706;
+  --color-saffron: #EA580C;
+  --color-stamp-red: #991B1B;
+  --color-moss: #0F766E;
+  --color-ink-text: #1E293B;
+  --color-sandalwood: #EAE6D9;
+
+  --font-serif: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink-text);
+  background-color: #F5F2EA;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(217, 119, 6, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(234, 88, 12, 0.03) 0%, transparent 40%),
+    url('/src/assets/images/indian_tradition_bg_1783358087182.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Beautiful custom Indian traditional patterned border utility */
+.india-border-top {
+  position: relative;
+}
+.india-border-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-saffron) 0px,
+    var(--color-saffron) 15px,
+    var(--color-marigold) 15px,
+    var(--color-marigold) 30px,
+    var(--color-moss) 30px,
+    var(--color-moss) 45px
+  );
+  border-radius: 4px 4px 0 0;
+}
+
+/* Intricate frame border style */
+.india-royal-card {
+  background-color: var(--color-paper);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), inset 0 0 40px rgba(234, 88, 12, 0.02);
+  position: relative;
+}
+
+.india-royal-card::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F2EA;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-saffron);
+  border-radius: 4px;
+}
+
+/* Thunk animation for Stamp Badges */
+@keyframes stampThunk {
+  0% {
+    transform: scale(1.15) rotate(-3deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(-8deg);
+    opacity: 1;
+  }
+}
+
+.stamp-badge-thunk-red {
+  animation: stampThunk 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform: rotate(-8deg);
+}
+
+.stamp-badge-thunk-green {
+  animation: stampThunk 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform: rotate(-5deg);
+}
+
+.stamp-badge-thunk-orange {
+  animation: stampThunk 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform: rotate(-6deg);
+}
+
+/* Multimodal Audio Voice Bar Animation */
+@keyframes voiceVisualizer {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(2.2); }
+}
+
+.animate-voice-bar {
+  animation: voiceVisualizer 1s ease-in-out infinite;
+  transform-origin: center;
+}
+
