@@ -39,8 +39,6 @@ Civic complaints usually go nowhere — a WhatsApp forward, a paper petition, a 
 - **Ompreet Mohapatra**
 - **Sudeshna Dash**
 
-Gandhi Engineering College, Bhubaneswar
-
 ## Tech Stack
 
 React 19 · Vite 6 · Tailwind CSS v4 · Firebase Auth · Google Cloud Firestore · Gemini API · Google Maps Platform · jsPDF
